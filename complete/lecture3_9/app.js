@@ -43,6 +43,7 @@ class App{
         this.geometry = new THREE.BoxBufferGeometry( 0.06, 0.06, 0.06 ); 
         this.meshes = [];
     }
+    // Testing the AR on web viva github
     
     setupVR(){
         this.renderer.xr.enabled = true; 
