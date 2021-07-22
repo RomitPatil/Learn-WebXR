@@ -35,7 +35,7 @@ class App{
         document.body.appendChild( this.stats.dom );
         
         this.initScene();
-        this.setupXR();
+        this.setupVR();
         
         window.addEventListener('resize', this.resize.bind(this) );
 	}	
@@ -45,7 +45,7 @@ class App{
         this.meshes = [];
     }
     
-    setupXR(){
+    setupVR(){
         
         this.renderer.xr.enabled = true;
 
