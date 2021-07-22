@@ -27,7 +27,7 @@ class App{
         const geometry = new THREE.BoxBufferGeometry();
 
         // I change the color
-        const material = new THREE.MeshStandardMaterial( { color: 0xFF0000 });
+        const material = new THREE.MeshStandardMaterial( { color: 0x0000FF });
 
         this.mesh = new THREE.Mesh( geometry, material );
         
