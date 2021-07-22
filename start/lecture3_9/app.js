@@ -45,6 +45,7 @@ class App{
         this.meshes = [];
     }
     
+    // update setup VR
     setupVR(){
         
         this.renderer.xr.enabled = true;
