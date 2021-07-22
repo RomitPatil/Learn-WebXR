@@ -105,7 +105,7 @@ class App{
         this.renderer.xr.enabled = true; 
         
         const self = this;
-        let controller;
+       
         
         function onConnected( event ) {
             if (self.info === undefined){
