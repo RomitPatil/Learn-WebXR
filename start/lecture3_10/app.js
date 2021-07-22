@@ -148,7 +148,7 @@ class App{
         controller.addEventListener('connected', onConnected);
 
         this.scene.add( controller );
-        this.controls = controller;
+        this.controller = controller;
 
         this.renderer.setAnimationLoop( this.render.bind(this) );
     }
