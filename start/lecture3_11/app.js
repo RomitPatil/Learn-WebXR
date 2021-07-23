@@ -161,7 +161,7 @@ class App{
         this.gestures.addEventListener( 'swipe' , (ev) => {
 
             console.log(ev);
-            self.ui.updateElement('info' , 'swipe $ {ev.direction}');
+            self.ui.updateElement('info' , `swipe $ {ev.direction}`);
 
             if(self.knight.object.visible){
 
@@ -184,7 +184,7 @@ class App{
 
                     ev.delta.multiplyScalar(3));
                     self.knight.object.position.copy(pos);
-                    self.ui.updateElement('info' , 'pan  x: $ {ev.delta.x.toFixed(3)} y:${ev.delta.y.toFixed(3)} z:${ev.delta.z.toFixed(3)}');
+                    self.ui.updateElement('info', `pan x:${ev.delta.x.toFixed(3)}, y:${ev.delta.y.toFixed(3)}, x:${ev.delta.z.toFixed(3)}` );
                 
             }
         });
@@ -200,7 +200,7 @@ class App{
 
                 const scale = self.startScale.clone().multiplyScalar(ev.scale);
                 self.knight.object.scale.copy(scale);
-                self.ui.updateElement('info' , 'pinch delta: $ {ev.delta.toFixed(3)} scale: ${ev.scale.toFixed(2)}');
+                self.ui.updateElement('info' , `pinch delta: ${ev.delta.toFixed(3)} scale: ${ev.scale.toFixed(2)}`);
             }
         });
 
@@ -214,7 +214,7 @@ class App{
 
                 self.knight.object.quaternion.copy(self.startQuaternion);
                 self.knight.object.rotateY(ev.theta);
-                self.ui.updateElement('info' , 'rotate ${ev.theta.toFixed(3)}');
+                self.ui.updateElement('info' , `rotate ${ev.theta.toFixed(3)}`);
             }
 
         });
