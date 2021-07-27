@@ -195,7 +195,7 @@ class App{
         
         const hitTestResults = frame.getHitTestResults(this.hitTestSource);
 
-        if(getHitTestResults.length) {
+        if(hitTestResults.length) {
 
             const referenceSpace = this.renderer.xr.getReferenceSpace();
             const hit = hitTestResults[0];
