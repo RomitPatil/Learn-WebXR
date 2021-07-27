@@ -119,6 +119,16 @@ class App{
 	}		
     
     initScene(){
+       
+
+        this.reticle = new THREE.Mesh(
+            new THREE.RingBufferGeometry(0.15, 0.2, 32).rotateX( - Math.PI/2),
+            new THREE.MeshBasicMaterial() 
+        );
+
+        this.reticle.matrixAutoUpdate = false;
+        this.reticle.visible = false;
+        this.scene.add(this.reticle);
         this.loadKnight();
     }
     
@@ -134,6 +144,18 @@ class App{
         
         function onSelect() {
             
+            if(self.knight === undefined) return;
+
+            if(self.reticle.visible){
+                if(self.knight.object.visible){
+                    self.workingVec3.setFromMatrixPosition(self.reticle.matrix);
+                    self.knight.newPath( self.workingVec3);
+                }else{
+                    self.knight.object.position.setFromMatrixPosition(
+                        self.reticle.matrix);
+                        self.knight.object.visible = true;
+                }
+            }
         }
 
         this.controller = this.renderer.xr.getController( 0 );
@@ -142,13 +164,48 @@ class App{
         this.scene.add( this.controller );    
     }
     
-    requestHitTestSource(){
+    requestHitTestSource()
+    {
         
+        const self = this;
+        const session = this.renderer.xr.getSession();
 
+        session.requestReferenceSpace('viewer').then (function (referenceSpace)
+        {
+            session.requestHitTestSource ( { space: referenceSpace }).then(
+
+                function ( source ) {
+
+                    self.hitTestSource = source;
+                }
+            )
+        });
+
+        session.addEventListener ('end' , function (){
+
+            self.hitTestSourceRequested = false;
+            self.hitTestSource = null;
+            self.referenceSpace = null;
+        } );
+
+        this.hitTestSourceRequested = true;
     }
     
     getHitTestResults( frame ){
         
+        const hitTestResults = frame.getHitTestResults(this.hitTestSource);
+
+        if(getHitTestResults.length) {
+
+            const referenceSpace = this.renderer.xr.getReferenceSpace();
+            const hit = hitTestResults[0];
+            const pose = hit.getPose (referenceSpace);
+
+            this.reticle.visible = true;
+            this.reticle.matrix.fromArray(pose.transform.matrix);
+        }else {
+            this.reticle.visible = false;
+        }
     }
 
     render( timestamp, frame ) {
