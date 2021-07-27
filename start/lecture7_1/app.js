@@ -141,7 +141,7 @@ class App{
                      ) * 100 );
 
                      const text = document.createElement('div');
-                     text.className = 'lable';
+                     text.className = 'label';
                      text.style.color = 'rgb(255,255,255)';
                      text.textContent = distance + 'cm';
                      document.querySelector('#container').appendChild(text);
