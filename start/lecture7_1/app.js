@@ -233,7 +233,7 @@ class App{
         
 this.labels.forEach ( label => {
 const pos = self.toScreenPosition( label.point, self.renderer.xr.getCamera (self.camera));
-label.div.style.transform = `translate(-50%, -5-%) translate(${pos.x}px, ${pos.y}px)`;
+label.div.style.transform = `translate(-50%, -50%) translate(${pos.x}px, ${pos.y}px)`;
 })
         this.renderer.render( this.scene, this.camera );
     }
