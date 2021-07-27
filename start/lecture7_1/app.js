@@ -146,7 +146,7 @@ class App{
                      text.textContent = distance + 'cm';
                      document.querySelector('#container').appendChild(text);
 
-                     self.labels.push ({dic: text, point: self.getCenterPoint(
+                     self.labels.push ({div: text, point: self.getCenterPoint(
                          self.measurements
                      )});
                      self.measurements = [];
