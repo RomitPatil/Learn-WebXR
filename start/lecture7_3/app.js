@@ -58,7 +58,7 @@ class App{
                         el.style.display = 'block';
                     })
                 }
-            })
+            });
         }
         
         const self = this;
@@ -154,6 +154,7 @@ class App{
         {
 session.addEventListener( 'end' , onSessionEnded );
 self.renderer.xr.setReferenceSpaceType( 'local' );
+self.renderer.xr.setSession ( session );
 
 currentSession = session;
 
